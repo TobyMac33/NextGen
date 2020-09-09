@@ -1,0 +1,32 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- script: echo Hello, world!
+  displayName: 'Run a one-line script'
+
+- script: |
+    echo Add other tasks to build, test, and deploy your project.
+    echo See https://aka.ms/yaml
+  displayName: 'Run a multi-line script'
+  name: string  # build numbering format
+resources:
+  pipelines: [ pipelineResource ]
+  containers: [ containerResource ]
+  repositories: [ repositoryResource ]
+variables: # several syntaxes, see specific section
+trigger: trigger
+pr: pr
+stages: [ stage | templateReference ]
+# ... other pipeline-level keywords
+jobs: [ job | templateReference ]
+# ... other pipeline-level keywords
+steps: [ script | bash | pwsh | powershell | checkout | task | templateReference ]
